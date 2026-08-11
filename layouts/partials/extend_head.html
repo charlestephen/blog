@@ -1,0 +1,7 @@
+{{- /* Cloudflare Web Analytics — only in production, only when a real token is set. */ -}}
+{{- with .Site.Params.analytics.cloudflare.token -}}
+{{- if and (eq hugo.Environment "production") (ne . "REPLACE_WITH_CLOUDFLARE_WEB_ANALYTICS_TOKEN") -}}
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js"
+        data-cf-beacon='{"token": "{{ . }}"}'></script>
+{{- end -}}
+{{- end -}}
