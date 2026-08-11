@@ -1,0 +1,96 @@
+baseURL = "https://blog.cst.nyc/"
+locale = "en-us"
+title = "The HandyHomo Homelab Blog"
+theme = "PaperMod"
+
+enableRobotsTXT = true
+enableEmoji = true
+enableInlineShortcodes = true
+
+# PaperMod uses its own output for the search page; JSON feeds the Fuse.js index.
+[outputs]
+  home = ["HTML", "RSS", "JSON"]
+
+[pagination]
+  pagerSize = 10
+
+[params]
+  env = "production"                       # enables Cloudflare analytics + head hints in prod
+  description = "Tech, homelab, and the occasional personal note — a place to archive, show work, and think out loud."
+  author = "Charles Stephen"
+  defaultTheme = "auto"                    # respects OS setting; toggle still available
+  ShowShareButtons = false
+  ShowReadingTime = true
+  ShowBreadCrumbs = true
+  ShowPostNavLinks = true
+  ShowCodeCopyButtons = true
+  ShowToc = true
+  TocOpen = false
+  ShowWordCount = true
+  comments = true                          # renders layouts/partials/comments.html (giscus)
+
+  [params.homeInfoParams]
+    Title = "The HandyHomo Homelab Blog 🏠🔧"
+    Content = "Tech and homelab notes, with the occasional personal aside. A personal archive, a showcase of what I build, and somewhere to think out loud. No politics."
+
+  [[params.socialIcons]]
+    name = "github"
+    url = "https://github.com/charlestephen"
+  [[params.socialIcons]]
+    name = "rss"
+    url = "index.xml"
+
+  # Client-side search over the JSON index.
+  [params.fuseOpts]
+    isCaseSensitive = false
+    shouldSort = true
+    location = 0
+    distance = 1000
+    threshold = 0.4
+    minMatchCharLength = 0
+    keys = ["title", "permalink", "summary", "content"]
+
+  # Cloudflare Web Analytics — paste the token from the CF dashboard (see CLOUDFLARE.md).
+  [params.analytics.cloudflare]
+    token = "REPLACE_WITH_CLOUDFLARE_WEB_ANALYTICS_TOKEN"
+
+  # giscus (GitHub Discussions comments). Fill IDs from https://giscus.app after
+  # creating the repo + enabling Discussions (see COMMENTS.md).
+  [params.giscus]
+    repo = "charlestephen/blog"
+    repoId = "REPLACE_REPO_ID"
+    category = "Announcements"
+    categoryId = "REPLACE_CATEGORY_ID"
+    mapping = "pathname"
+    reactionsEnabled = "1"
+    emitMetadata = "0"
+    inputPosition = "bottom"
+    theme = "preferred_color_scheme"
+    lang = "en"
+
+[menu]
+  [[menu.main]]
+    identifier = "posts"
+    name = "Posts"
+    url = "/posts/"
+    weight = 10
+  [[menu.main]]
+    identifier = "search"
+    name = "Search"
+    url = "/search/"
+    weight = 20
+  [[menu.main]]
+    identifier = "tags"
+    name = "Tags"
+    url = "/tags/"
+    weight = 30
+  [[menu.main]]
+    identifier = "about"
+    name = "About"
+    url = "/about/"
+    weight = 40
+
+[markup.highlight]
+  noClasses = false          # use CSS classes so dark/light code themes work
+  codeFences = true
+  guessSyntax = true

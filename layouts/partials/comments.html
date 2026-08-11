@@ -1,0 +1,20 @@
+{{- /* giscus comments (GitHub Discussions). Dormant until repoId/categoryId are filled in. */ -}}
+{{- with .Site.Params.giscus -}}
+{{- if and (ne .repoId "REPLACE_REPO_ID") (ne .categoryId "REPLACE_CATEGORY_ID") -}}
+<script src="https://giscus.app/client.js"
+        data-repo="{{ .repo }}"
+        data-repo-id="{{ .repoId }}"
+        data-category="{{ .category }}"
+        data-category-id="{{ .categoryId }}"
+        data-mapping="{{ .mapping }}"
+        data-strict="0"
+        data-reactions-enabled="{{ .reactionsEnabled }}"
+        data-emit-metadata="{{ .emitMetadata }}"
+        data-input-position="{{ .inputPosition }}"
+        data-theme="{{ .theme }}"
+        data-lang="{{ .lang }}"
+        crossorigin="anonymous"
+        async>
+</script>
+{{- end -}}
+{{- end -}}
