@@ -9,4 +9,3 @@
 # Local tooling and OS files
 .gitignore
 .gitguardian*
-.claude
